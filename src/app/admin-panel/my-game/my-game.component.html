@@ -1,0 +1,68 @@
+<h3 class="text-left fs-3 p-3 bg-light" ><i class="fa fa-cubes" aria-hidden="true"></i> Live Dashboard</h3>
+<div class="alert alert-success" role="alert" *ngIf="gameAlert">
+  Thanks for play with us. 
+</div>
+<div class="bg-white m-2" style="height: 70vh;">
+  <form #data="ngForm">
+    <table class="table table-bordered" >
+      <tbody>
+        <tr>
+          <td colspan="10">
+            <span class="fw-bold text-danger">Play with 1 to 100 </span>
+          </td>
+        </tr>
+        <tr>
+          <td *ngFor="let data of jsonData; let i = index" style="display: flex;flex-direction: column;" >
+            <span class="table-selction">{{ data.number }}</span>
+            <input type="number" model (change)="valuechange('standard', data.number, $event, i)"
+              name="{{ data.number }}" id="{{ data.number }}" [(ngModel)]="data.amount" style="position: relative;left: 32px;top:-25px" class="table-box" />
+          </td>
+        </tr>
+        <tr>
+          <td colspan="10">
+            <span class="fw-bold text-danger">Bahar Haroof -</span>
+          </td>
+        </tr>
+        <tr>
+          <td *ngFor="let data of BaharHaroof; let i = index">
+            <span class="table-selction">{{ data.number }}</span>
+            <input type="number" model (change)="valuechange('bahar', data.number, $event, i)" name="{{ data.number }}"
+              id="{{ data.number }}" [(ngModel)]="data.amount" class="table-box" />
+          </td>
+        </tr>
+        <tr>
+          <td colspan="10">
+            <span class="fw-bold text-danger">Under Haroof -</span>
+          </td>
+        </tr>
+        <tr>
+          <td *ngFor="let data of underHaroof; let i = index">
+            <span class="table-selction">{{ data.number }}</span>
+            <input type="text" model (change)="valuechange('under', data.number, $event, i)" name="{{ data.number }}"
+              id="{{ data.number }}" [(ngModel)]="data.amount" class="table-box" />
+          </td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="5">
+            <span class="fw-bolder text-secondary p-3">Wallet Amount</span>
+            <span class="fw-bolder text-success p-3">{{ walletAmount }}</span>
+          </td>
+          <td colspan="5">
+            <span class="fw-bolder text-secondary p-3">Bidded Amount</span>
+            <span class="fw-bolder text-success p-3">{{ addedmoney }}</span>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="10">
+            <button class="btn btn-success btn-sm my-2 w-100" type="submit" (click)="playGame()">
+              <span class="spinner-grow spinner-grow-sm"></span>
+              Play Game
+            </button>
+          </td>
+        </tr>
+      </tfoot>
+    </table>
+  </form>
+</div>

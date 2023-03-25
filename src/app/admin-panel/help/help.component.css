@@ -1,0 +1,23 @@
+* {
+    font-family: sans-serif;
+
+  }
+
+  table {
+    border-spacing: 0px;
+    text-align: center;
+    border-collapse: separate;
+    text-indent: initial;
+    font-size: 13px;
+    width: 100%;
+    justify-content: center;
+  }
+ td{
+    border: 1px solid #000;
+  }
+  th{
+    padding: 3px;
+    background-color: darkred;
+    color: #ffff;
+    border: 1px solid black;
+  }

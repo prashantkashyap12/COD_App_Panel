@@ -1,0 +1,31 @@
+.wahtsaap{
+    position: fixed;
+    bottom: 100px;
+    font-family: sans-serif;
+    right: 10px;
+    opacity: 0.5;
+
+}
+
+.wahtsaap-colo{
+    color: rgb(255, 255, 255);
+    background-color: rgb(26, 200, 44);
+    padding: 10px;
+    border-radius: 100px;
+    font-size: 15px;
+    text-transform: inherit;
+}
+
+.counter{
+    position: fixed;
+    bottom: 150px;
+    font-family: sans-serif;
+    right: 10px;
+    opacity: 0.5;
+}
+.wahtsaap-colo:hover{
+    color: rgb(244, 244, 244);
+    background-color: rgb(52, 52, 52);
+    transition: 0.5s ease;
+}
+

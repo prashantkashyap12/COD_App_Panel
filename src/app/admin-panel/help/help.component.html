@@ -1,0 +1,461 @@
+<h3 class="text-left p-3 bg-light vh-94 h3"> Old data</h3>
+<div class="bg-white" style="height: 73vh;">
+
+    <div class="col-12 d-flex justify-content-between p-2">
+        <select name="year" id="" required (change)="dataYear($event.target)" class="form-control fw-bold form-select m-auto border border-danger " style="width:45%" >
+            <option value="Def" >- Year -</option>
+            <option value="2016">2016</option>
+            <option value="2017">2017</option>
+            <option value="2018">2018</option>
+            <option value="2019">2019</option>
+            <option value="2020">2020</option>
+            <option value="2021">2021</option>
+            <option value="2022">2022</option>
+            <option value="2023">2023</option>
+        </select>
+        <select name="month" id="" required (change)="dataMoney($event.target)" class="form-control fw-bold form-select m-auto border border-danger " style="width:45%" >
+            <option value="Def" >- Month -</option>
+            <option value="Jan">January</option>
+            <option value="Feb">Febuary</option>
+            <option value="Mar">March</option>
+            <option value="Apr">April</option>
+            <option value="May">May</option>
+            <option value="Jun">June</option>
+            <option value="Jul">July</option>
+            <option value="Aug">August</option>
+            <option value="Sep">September</option>
+            <option value="Oct">October</option>
+            <option value="Nov">November</option>
+            <option value="Dec">December</option>
+        </select>
+
+        <!-- <select name="month" id="" required (change)="getmarket($event.target)" class="form-control fw-bold form-select m-auto border border-danger " style="width:45%" >
+            <option selected> - Market -</option>
+            <option value="Banda_Express">Banda Express</option>
+            <option value="Delhi_Bazar">Delhi Bazar</option>
+            <option value="Shri_Ganesh">Shri Ganesh</option>
+            <option value="Faridabad">Faridabad</option>
+            <option value="Ghaziyabaad">Ghaziyabaad</option>
+            <option value="Gali">Gali</option>
+            <option value="Hamirpur_express">Hamirpur Express</option>
+            <option value="Disawar">Disawar</option>
+        </select> -->
+    </div>
+
+
+
+    <div class="text-center pt-2" *ngIf="viewCondi; then data1 else data2"></div>
+    <ng-template #data1>
+        <div *ngIf="viewCondi2; then dataview1 else dataview2"></div>
+        <ng-template #dataview1 class=" w-100">
+            <button class="btn btn-danger m-auto d-flex btn-sm" (click)="getResult()">&nbsp;Get data</button>
+
+                <!-- <div *ngIf="viewCondi3; then viewCondi3A else viewCondi3B"> </div>
+                <ng-template #viewCondi3A>
+                    <button class="btn btn-danger m-auto d-flex btn-sm" (click)="getResult()">&nbsp;Get data</button>
+                </ng-template>
+                <ng-template #viewCondi3B>
+                    <div class="alert alert-danger mx-3" role="alert">
+                        Please Select Market 
+                    </div> 
+                </ng-template> -->
+
+        </ng-template>
+        <ng-template #dataview2>
+            <div class="alert alert-danger mx-3" role="alert">
+                Please Select Month 
+            </div>
+        </ng-template>
+    </ng-template>
+    <ng-template #data2>
+        <div class="alert alert-danger mx-3" role="alert">
+            Please Select Year 
+        </div>
+    </ng-template>
+
+    
+
+    <div>
+        <div *ngIf="liveRes">
+           
+            <table class="my-2 table" >
+                <thead *ngFor="let bEx of Banda_Express">
+        <span *ngFor="let dBz of Delhi_Bazar">
+            <span *ngFor="let Dis of Shri_Ganesh">
+            <span *ngFor="let Fair of Faridabad">
+                <span *ngFor="let Gli of Ghaziyabaad">
+                <span *ngFor="let gzb of Hamirpur_express"> 
+                    <span *ngFor="let HEx of Gali">
+                    <span *ngFor="let sGn of Disawar">
+
+                        <tr>
+                            <th class="bg-success py-1" colspan="10">
+                                Result is {{bEx.month}} / {{bEx.year}}
+                            </th>
+                        </tr>
+                        <tr>
+                            <th>Day</th>
+                            <th>BDEX</th>
+                            <th>DLB</th>
+                            <th>DSWR</th>
+                            <th>FRBD</th>
+                            <th>GALI</th>
+                            <th>GZBD</th>
+                            <th>HMREX</th>
+                            <th>SG</th>
+                        </tr>
+                        <tr>
+                            <th>1 {{bEx.month}}</th>
+                            <td>{{bEx.A1}}</td>
+                            <td>{{dBz.A1}}</td>
+                            <td>{{Dis.A1}}</td>
+                            <td>{{Fair.A1}}</td>
+                            <td>{{Gli.A1}}</td>
+                            <td>{{gzb.A1}}</td>
+                            <td>{{HEx.A1}}</td>
+                            <td>{{sGn.A1}}</td>
+                        </tr>
+                        <tr>
+                            <th>2 {{bEx.month}}</th>
+                            <td>{{bEx.A2}}</td>
+                            <td>{{dBz.A2}}</td>
+                            <td>{{Dis.A2}}</td>
+                            <td>{{Fair.A2}}</td>
+                            <td>{{Gli.A2}}</td>
+                            <td>{{gzb.A2}}</td>
+                            <td>{{HEx.A2}}</td>
+                            <td>{{sGn.A2}}</td>
+                        </tr>
+                        <tr>
+                            <th>3 {{bEx.month}}</th>
+                            <td>{{bEx.A3}}</td>
+                            <td>{{dBz.A3}}</td>
+                            <td>{{Dis.A3}}</td>
+                            <td>{{Fair.A3}}</td>
+                            <td>{{Gli.A3}}</td>
+                            <td>{{gzb.A3}}</td>
+                            <td>{{HEx.A3}}</td>
+                            <td>{{sGn.A3}}</td>
+                        </tr>
+                        <tr>
+                            <th>4 {{bEx.month}}</th>
+                            <td>{{bEx.A4}}</td>
+                            <td>{{dBz.A4}}</td>
+                            <td>{{Dis.A4}}</td>
+                            <td>{{Fair.A4}}</td>
+                            <td>{{Gli.A4}}</td>
+                            <td>{{gzb.A4}}</td>
+                            <td>{{HEx.A4}}</td>
+                            <td>{{sGn.A4}}</td>
+                        </tr>
+                        <tr>
+                            <th>5 {{bEx.month}}</th>
+                            <td>{{bEx.A5}}</td>
+                            <td>{{dBz.A5}}</td>
+                            <td>{{Dis.A5}}</td>
+                            <td>{{Fair.A5}}</td>
+                            <td>{{Gli.A5}}</td>
+                            <td>{{gzb.A5}}</td>
+                            <td>{{HEx.A5}}</td>
+                            <td>{{sGn.A5}}</td>
+                        </tr>
+                        <tr>
+                            <th>6 {{bEx.month}}</th>
+                            <td>{{bEx.A6}}</td>
+                            <td>{{dBz.A6}}</td>
+                            <td>{{Dis.A6}}</td>
+                            <td>{{Fair.A6}}</td>
+                            <td>{{Gli.A6}}</td>
+                            <td>{{gzb.A6}}</td>
+                            <td>{{HEx.A6}}</td>
+                            <td>{{sGn.A6}}</td>
+                        </tr>
+                        <tr>
+                            <th>7 {{bEx.month}}</th>
+                            <td>{{bEx.A7}}</td>
+                            <td>{{dBz.A7}}</td>
+                            <td>{{Dis.A7}}</td>
+                            <td>{{Fair.A7}}</td>
+                            <td>{{Gli.A7}}</td>
+                            <td>{{gzb.A7}}</td>
+                            <td>{{HEx.A7}}</td>
+                            <td>{{sGn.A7}}</td>
+                        </tr>
+                        <tr>
+                            <th>8 {{bEx.month}}</th>
+                            <td>{{bEx.A8}}</td>
+                            <td>{{dBz.A8}}</td>
+                            <td>{{Dis.A8}}</td>
+                            <td>{{Fair.A8}}</td>
+                            <td>{{Gli.A8}}</td>
+                            <td>{{gzb.A8}}</td>
+                            <td>{{HEx.A8}}</td>
+                            <td>{{sGn.A8}}</td>
+                        </tr>
+                        <tr>
+                            <th>9 {{bEx.month}}</th>
+                            <td>{{bEx.A9}}</td>
+                            <td>{{dBz.A9}}</td>
+                            <td>{{Dis.A9}}</td>
+                            <td>{{Fair.A9}}</td>
+                            <td>{{Gli.A9}}</td>
+                            <td>{{gzb.A9}}</td>
+                            <td>{{HEx.A9}}</td>
+                            <td>{{sGn.A9}}</td>
+                        </tr>
+                        <tr>
+                            <th>10 {{bEx.month}}</th>
+                            <td>{{bEx.A10}}</td>
+                            <td>{{dBz.A10}}</td>
+                            <td>{{Dis.A10}}</td>
+                            <td>{{Fair.A10}}</td>
+                            <td>{{Gli.A10}}</td>
+                            <td>{{gzb.A10}}</td>
+                            <td>{{HEx.A10}}</td>
+                            <td>{{sGn.A10}}</td>
+                        </tr>
+                        <tr>
+                            <th>11 {{bEx.month}}</th>
+                            <td>{{bEx.A11}}</td>
+                            <td>{{dBz.A11}}</td>
+                            <td>{{Dis.A11}}</td>
+                            <td>{{Fair.A11}}</td>
+                            <td>{{Gli.A11}}</td>
+                            <td>{{gzb.A11}}</td>
+                            <td>{{HEx.A11}}</td>
+                            <td>{{sGn.A11}}</td>
+                        </tr>
+                        <tr>
+                            <th>12 {{bEx.month}}</th>
+                            <td>{{bEx.A12}}</td>
+                            <td>{{dBz.A12}}</td>
+                            <td>{{Dis.A12}}</td>
+                            <td>{{Fair.A12}}</td>
+                            <td>{{Gli.A12}}</td>
+                            <td>{{gzb.A12}}</td>
+                            <td>{{HEx.A12}}</td>
+                            <td>{{sGn.A12}}</td>
+                        </tr>
+                        <tr>
+                            <th>13 {{bEx.month}}</th>
+                            <td>{{bEx.A13}}</td>
+                            <td>{{dBz.A13}}</td>
+                            <td>{{Dis.A13}}</td>
+                            <td>{{Fair.A13}}</td>
+                            <td>{{Gli.A13}}</td>
+                            <td>{{gzb.A13}}</td>
+                            <td>{{HEx.A13}}</td>
+                            <td>{{sGn.A13}}</td>
+                        </tr>
+                        <tr>
+                            <th>14 {{bEx.month}}</th>
+                            <td>{{bEx.A14}}</td>
+                            <td>{{dBz.A14}}</td>
+                            <td>{{Dis.A14}}</td>
+                            <td>{{Fair.A14}}</td>
+                            <td>{{Gli.A14}}</td>
+                            <td>{{gzb.A14}}</td>
+                            <td>{{HEx.A14}}</td>
+                            <td>{{sGn.A14}}</td>
+                        </tr>
+                        <tr>
+                            <th>15 {{bEx.month}}</th>
+                            <td>{{bEx.A15}}</td>
+                            <td>{{dBz.A15}}</td>
+                            <td>{{Dis.A15}}</td>
+                            <td>{{Fair.A15}}</td>
+                            <td>{{Gli.A15}}</td>
+                            <td>{{gzb.A15}}</td>
+                            <td>{{HEx.A15}}</td>
+                            <td>{{sGn.A15}}</td>
+                        </tr>
+                        <tr>
+                            <th>16 {{bEx.month}}</th>
+                            <td>{{bEx.A16}}</td>
+                            <td>{{dBz.A16}}</td>
+                            <td>{{Dis.A16}}</td>
+                            <td>{{Fair.A16}}</td>
+                            <td>{{Gli.A16}}</td>
+                            <td>{{gzb.A16}}</td>
+                            <td>{{HEx.A16}}</td>
+                            <td>{{sGn.A16}}</td>
+                        </tr>
+                        <tr>
+                            <th>17 {{bEx.month}}</th>
+                            <td>{{bEx.A17}}</td>
+                            <td>{{dBz.A17}}</td>
+                            <td>{{Dis.A17}}</td>
+                            <td>{{Fair.A17}}</td>
+                            <td>{{Gli.A17}}</td>
+                            <td>{{gzb.A17}}</td>
+                            <td>{{HEx.A17}}</td>
+                            <td>{{sGn.A17}}</td>
+                        </tr>
+                        <tr>
+                            <th>18 {{bEx.month}}</th>
+                            <td>{{bEx.A18}}</td>
+                            <td>{{dBz.A18}}</td>
+                            <td>{{Dis.A18}}</td>
+                            <td>{{Fair.A18}}</td>
+                            <td>{{Gli.A18}}</td>
+                            <td>{{gzb.A18}}</td>
+                            <td>{{HEx.A18}}</td>
+                            <td>{{sGn.A18}}</td>
+                        </tr>
+                        <tr>
+                            <th>19 {{bEx.month}}</th>
+                            <td>{{bEx.A19}}</td>
+                            <td>{{dBz.A19}}</td>
+                            <td>{{Dis.A19}}</td>
+                            <td>{{Fair.A19}}</td>
+                            <td>{{Gli.A19}}</td>
+                            <td>{{gzb.A19}}</td>
+                            <td>{{HEx.A19}}</td>
+                            <td>{{sGn.A19}}</td>
+                        </tr>
+                        <tr>
+                            <th>20 {{bEx.month}}</th>
+                            <td>{{bEx.A20}}</td>
+                            <td>{{dBz.A20}}</td>
+                            <td>{{Dis.A20}}</td>
+                            <td>{{Fair.A20}}</td>
+                            <td>{{Gli.A20}}</td>
+                            <td>{{gzb.A20}}</td>
+                            <td>{{HEx.A20}}</td>
+                            <td>{{sGn.A20}}</td>
+                        </tr>
+                        <tr>
+                            <th>21 {{bEx.month}}</th>
+                            <td>{{bEx.A21}}</td>
+                            <td>{{dBz.A21}}</td>
+                            <td>{{Dis.A21}}</td>
+                            <td>{{Fair.A21}}</td>
+                            <td>{{Gli.A21}}</td>
+                            <td>{{gzb.A21}}</td>
+                            <td>{{HEx.A21}}</td>
+                            <td>{{sGn.A21}}</td>
+                        </tr>
+                        <tr>
+                            <th>22 {{bEx.month}}</th>
+                            <td>{{bEx.A22}}</td>
+                            <td>{{dBz.A22}}</td>
+                            <td>{{Dis.A22}}</td>
+                            <td>{{Fair.A22}}</td>
+                            <td>{{Gli.A22}}</td>
+                            <td>{{gzb.A22}}</td>
+                            <td>{{HEx.A22}}</td>
+                            <td>{{sGn.A22}}</td>
+                        </tr>
+                        <tr>
+                            <th>23 {{bEx.month}}</th>
+                            <td>{{bEx.A23}}</td>
+                            <td>{{dBz.A23}}</td>
+                            <td>{{Dis.A23}}</td>
+                            <td>{{Fair.A23}}</td>
+                            <td>{{Gli.A23}}</td>
+                            <td>{{gzb.A23}}</td>
+                            <td>{{HEx.A23}}</td>
+                            <td>{{sGn.A23}}</td>
+                        </tr>
+                        <tr>
+                            <th>24 {{bEx.month}}</th>
+                            <td>{{bEx.A24}}</td>
+                            <td>{{dBz.A24}}</td>
+                            <td>{{Dis.A24}}</td>
+                            <td>{{Fair.A24}}</td>
+                            <td>{{Gli.A24}}</td>
+                            <td>{{gzb.A24}}</td>
+                            <td>{{HEx.A24}}</td>
+                            <td>{{sGn.A24}}</td>
+                        </tr>
+                        <tr>
+                            <th>25 {{bEx.month}}</th>
+                            <td>{{bEx.A25}}</td>
+                            <td>{{dBz.A25}}</td>
+                            <td>{{Dis.A25}}</td>
+                            <td>{{Fair.A25}}</td>
+                            <td>{{Gli.A25}}</td>
+                            <td>{{gzb.A25}}</td>
+                            <td>{{HEx.A25}}</td>
+                            <td>{{sGn.A25}}</td>
+                        </tr>
+                        <tr>
+                            <th>26 {{bEx.month}}</th>
+                            <td>{{bEx.A26}}</td>
+                            <td>{{dBz.A26}}</td>
+                            <td>{{Dis.A26}}</td>
+                            <td>{{Fair.A26}}</td>
+                            <td>{{Gli.A26}}</td>
+                            <td>{{gzb.A26}}</td>
+                            <td>{{HEx.A26}}</td>
+                            <td>{{sGn.A26}}</td>
+                        </tr>
+                        <tr>
+                            <th>27 {{bEx.month}}</th>
+                            <td>{{bEx.A27}}</td>
+                            <td>{{dBz.A27}}</td>
+                            <td>{{Dis.A27}}</td>
+                            <td>{{Fair.A27}}</td>
+                            <td>{{Gli.A27}}</td>
+                            <td>{{gzb.A27}}</td>
+                            <td>{{HEx.A27}}</td>
+                            <td>{{sGn.A27}}</td>
+                        </tr>
+                        <tr>
+                            <th>28 {{bEx.month}}</th>
+                            <td>{{bEx.A28}}</td>
+                            <td>{{dBz.A28}}</td>
+                            <td>{{Dis.A28}}</td>
+                            <td>{{Fair.A28}}</td>
+                            <td>{{Gli.A28}}</td>
+                            <td>{{gzb.A28}}</td>
+                            <td>{{HEx.A28}}</td>
+                            <td>{{sGn.A28}}</td>
+                        </tr>
+                        <tr>
+                            <th>29 {{bEx.month}}</th>
+                            <td>{{bEx.A29}}</td>
+                            <td>{{dBz.A29}}</td>
+                            <td>{{Dis.A29}}</td>
+                            <td>{{Fair.A29}}</td>
+                            <td>{{Gli.A29}}</td>
+                            <td>{{gzb.A29}}</td>
+                            <td>{{HEx.A29}}</td>
+                            <td>{{sGn.A29}}</td>
+                        </tr>
+                        <tr>
+                            <th>30 {{bEx.month}}</th>
+                            <td>{{bEx.A30}}</td>
+                            <td>{{dBz.A30}}</td>
+                            <td>{{Dis.A30}}</td>
+                            <td>{{Fair.A30}}</td>
+                            <td>{{Gli.A30}}</td>
+                            <td>{{gzb.A30}}</td>
+                            <td>{{HEx.A30}}</td>
+                            <td>{{sGn.A30}}</td>
+                        </tr>
+                        <tr>
+                            <th>31 {{bEx.month}}</th>
+                            <td>{{bEx.A31}}</td>
+                            <td>{{dBz.A31}}</td>
+                            <td>{{Dis.A31}}</td>
+                            <td>{{Fair.A31}}</td>
+                            <td>{{Gli.A31}}</td>
+                            <td>{{gzb.A31}}</td>
+                            <td>{{HEx.A31}}</td>
+                            <td>{{sGn.A31}}</td>
+                        </tr>
+                    </span>
+                    </span>
+                </span>
+                </span>
+            </span>
+            </span>
+        </span>
+
+                </thead>
+            </table>
+        </div>
+    </div>
+
+</div>

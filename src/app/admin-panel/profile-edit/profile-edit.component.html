@@ -1,0 +1,70 @@
+<h3 class="text-left fw-bold fs-3 p-3 bg-light">Edit Profile</h3>
+<button type="button" class="text-right text-danger btn sm-btn" routerLink="/user-profile">
+  <i class="fa fa-reply-all" aria-hidden="true"></i> Back
+
+</button>
+<div class="bg-white" style="height: 66vh">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 p-5">
+        <form action="">
+          <div class="form-group my-1"> <!-- Enter Name -->
+            <input type="text" name="firstName" [(ngModel)]="firstName" placeholder="Enter Your Name" maxlength="15" class="w-100 p-1" />
+          </div>
+          <div class="form-group my-1">  <!-- Enter Sur Name -->
+            <input type="text" name="post" [(ngModel)]="post" placeholder="Enter Last Name"  maxlength="15" class="w-100 p-1" />
+          </div>
+         
+          <div class="form-group my-1">   <!-- Enter Contact  -->
+            <input type="text" name="phoneNumber" [(ngModel)]="phoneNumber" maxlength="10" placeholder="Update contact"
+              class="w-100 p-1" />
+          </div>
+          <div class="form-group my-1">   <!-- Enter Email  -->
+            <input type="text" placeholder="Update E-mail" name="emailId" disabled [(ngModel)]="emailId" maxlength="20" class="w-100 p-1" />
+          </div>
+          <div class="form-group my-1">  <!-- Enter Reffer Code -->
+            <input type="text" name="surName" [(ngModel)]="surName" disabled placeholder="Reffer Code Get 50₹"  maxlength="10" class="w-100 p-1" />
+          </div>         
+          
+          <div class="form-group my-1">
+            <input type="text" disabled placeholder="Update Password" name="password" [(ngModel)]="password"
+              class="w-50 p-1" />
+            <button type="button" class="w-50 p-1 btn btn btn-danger" style="border-radius: 0px 8px 8px 0px;" data-bs-toggle="modal" data-bs-target="#exampleModal1">
+              Set Password
+            </button>
+          </div>
+          <span class="text-danger">{{"Confirm Account - "+ address}}</span>
+          <div class="form-group my-1">  <!-- Enter Account Number  -->
+            <input type="text" name="address" [(ngModel)]="address" placeholder="Enter Account Number" maxlength="20" class="w-100 p-1" />
+          </div>
+          <div class="form-group my-1"> <!-- Enter Account IFSC Code  -->
+            <input type="text" name="paymentInfo" [(ngModel)]="paymentInfo" placeholder="Enter IFSC Code" maxlength="10" class="w-100 p-1" />
+          </div>
+          <button class="btn btn-success w-100" (click)="dataupdate()">
+            Update
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Update Password</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <input type="number" id="newPassword" [(ngModel)]="this.newPassword" name="newPassword"
+            placeholder="Enter New Password" class="datainput form-control" />
+          <button type="button" class="btn btn-success w-100 my-2" (click)="changePassword()">
+            Update Password
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

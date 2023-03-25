@@ -1,0 +1,57 @@
+<h3 class="text-left p-3 bg-light vh-94"><i class="fa fa-history" aria-hidden="thue"></i> Game History</h3>
+<div class="bg-white" style="height: 73vh;">
+
+    <table  class="table border table-bordered m-auto" style="width: 90%;">
+        <thead class="bg-dark text-light">
+            <tr>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Market</th>
+                <th>Chart</th>
+            </tr>
+        </thead>
+        <tbody class="text-center" *ngFor="let cell of dataview; index as i">
+            <tr>
+                <td>{{cell.liveTime | date:"dd-MM-yy"}}</td>
+                <td>{{cell.liveTime | date:'shortTime':'hh:mm:a'}}</td>
+                <td>{{cell.marketValue}}</td>
+                <td><a (click)="viewChart(i)" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa fa-search-plus text-danger" aria-hidden="true"></i></a></td>
+            </tr>
+        </tbody>
+    </table>   
+
+
+    <!-- //POP oup -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <table class="table border table-bordered text-center">
+                        <thead class="bg-dark text-light">
+                            <tr>
+                                <th>Sr.</th>
+                                <th>Game Type</th>
+                                <th>Number</th>
+                                <th>Amount</th>
+                                <!-- <th>Testing</th> -->
+                            </tr>
+                        </thead>
+                        <tbody *ngFor="let data of tempArry;index as i">
+                            <tr>
+                                <td>{{i+1}}</td>
+                                <td>{{data.type}}</td>
+                                <td>{{data.num}}</td>
+                                <td>{{data.amount}}</td>
+                                <!-- <td>{{data | json}}</td> -->
+                            </tr>
+                        </tbody>
+                    </table>
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
